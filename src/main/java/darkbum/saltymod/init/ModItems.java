@@ -705,17 +705,17 @@ public class ModItems {
 
 
         wm_salt_cooked_bison = new ItemSaltFood("wm_salt_cooked_bison").setCreativeTab(tab)
-            .addVariant(0, "wm_salt_cooked_bison", "wm/wm_salt_cooked_bison", 9, 0.7f, false);
+            .addVariant(0, "wm_salt_cooked_bison", "wm/wm_salt_cooked_bison", 6, 0.75f, false);
         wm_salt_cooked_calamari = new ItemSaltFood("wm_salt_cooked_calamari").setCreativeTab(tab)
-            .addVariant(0, "wm_salt_cooked_calamari", "wm/wm_salt_cooked_calamari", 6, 0.7f, false);
+            .addVariant(0, "wm_salt_cooked_calamari", "wm/wm_salt_cooked_calamari", 5, 0.6f, false);
         wm_salt_cooked_chevon = new ItemSaltFood("wm_salt_cooked_chevon").setCreativeTab(tab)
-            .addVariant(0, "wm_salt_cooked_chevon", "wm/wm_salt_cooked_chevon", 7, 0.7f, false);
+            .addVariant(0, "wm_salt_cooked_chevon", "wm/wm_salt_cooked_chevon", 6, 0.75f, false);
         wm_salt_cooked_goose = new ItemSaltFood("wm_salt_cooked_goose").setCreativeTab(tab)
-            .addVariant(0, "wm_salt_cooked_goose", "wm/wm_salt_cooked_goose", 7, 0.7f, false);
+            .addVariant(0, "wm_salt_cooked_goose", "wm/wm_salt_cooked_goose", 5, 0.7f, false);
         wm_salt_cooked_mouse = new ItemSaltFood("wm_salt_cooked_mouse").setCreativeTab(tab)
             .addVariant(0, "wm_salt_cooked_mouse", "wm/wm_salt_cooked_mouse", 5, 0.7f, false);
         wm_salt_cooked_venison = new ItemSaltFood("wm_salt_cooked_venison").setCreativeTab(tab)
-            .addVariant(0, "wm_salt_cooked_venison", "wm/wm_salt_cooked_venison", 9, 0.7f, false);
+            .addVariant(0, "wm_salt_cooked_venison", "wm/wm_salt_cooked_venison", 6, 0.75f, false);
 
 
         registerItem(dev_item, "dev_item");
