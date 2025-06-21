@@ -6,7 +6,6 @@ import codechicken.nei.recipe.TemplateRecipeHandler;
 import darkbum.saltymod.SaltyMod;
 import darkbum.saltymod.init.ModItems;
 import darkbum.saltymod.inventory.gui.GuiCookingPot;
-import darkbum.saltymod.item.ItemSalt;
 import darkbum.saltymod.util.PotcookingRecipe;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
@@ -19,7 +18,6 @@ import java.util.Map;
 
 /**
  * NEI recipe handler for displaying Cooking Pot recipes in the NEI interface.
- * For now, this handler provides a GUI texture and a display name for this recipe category.
  *
  * @author DarkBum
  * @since 2.0.0
@@ -61,7 +59,7 @@ public class NEIPotcookingRecipeHandler extends TemplateRecipeHandler {
 
         @Override
         public List<PositionedStack> getIngredients() {
-            return this.ingreds;
+            return this.getCycledIngredients(cycleticks / 20, this.ingreds);
         }
 
         @Override
