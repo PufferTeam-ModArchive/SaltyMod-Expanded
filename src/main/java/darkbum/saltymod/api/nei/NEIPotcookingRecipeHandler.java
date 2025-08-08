@@ -74,6 +74,8 @@ public class NEIPotcookingRecipeHandler extends TemplateRecipeHandler {
             for (Map.Entry<ItemStack, PotcookingRecipe.PotRecipe> recipe : PotcookingRecipe.cooking().getRecipes()) {
                 arecipes.add(new CookingPotPair(recipe.getValue()));
             }
+        } else {
+            super.loadCraftingRecipes(outputId, results);
         }
     }
     
@@ -83,8 +85,6 @@ public class NEIPotcookingRecipeHandler extends TemplateRecipeHandler {
             if(NEIServerUtils.areStacksSameType(recipe.getKey(), result)) {
                 arecipes.add(new CookingPotPair(recipe.getValue()));
             }
-        } else {
-            super.loadCraftingRecipes(outputId, results);
         }
     }
 

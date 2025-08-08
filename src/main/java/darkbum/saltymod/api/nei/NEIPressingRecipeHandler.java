@@ -69,6 +69,8 @@ public class NEIPressingRecipeHandler extends TemplateRecipeHandler {
             for (Map.Entry<ItemStack, PressingRecipe.PressRecipe> recipe : PressingRecipe.pressing().getRecipes()) {
                 arecipes.add(new PressPair(recipe.getValue()));
             }
+        } else {
+            super.loadCraftingRecipes(outputId, results);
         }
     }
 
@@ -78,8 +80,6 @@ public class NEIPressingRecipeHandler extends TemplateRecipeHandler {
             if(NEIServerUtils.areStacksSameType(recipe.getValue().output1(), result) || NEIServerUtils.areStacksSameType(recipe.getValue().output2(), result)) {
                 arecipes.add(new PressPair(recipe.getValue()));
             }
-        } else {
-            super.loadCraftingRecipes(outputId, results);
         }
     }
 
