@@ -160,16 +160,19 @@ public class SaltyMod {
         ModOreDictionary.init();
 
         // Load internal recipes
-        ModRemovedRecipes.init();
-        ModShapedRecipes.init();
-        ModShapelessRecipes.init();
-        ModSmeltingRecipes.init();
-        ModEvaporatorRecipes.init();
-        if (enableMachines) {
-            ModPressRecipes.init();
-            ModCookingPotRecipes.init();
-            ModClayOvenRecipes.init();
+        if(!isModLoaded("materialis")) {
+            ModRemovedRecipes.init();
+            ModShapedRecipes.init();
+            ModShapelessRecipes.init();
+            ModSmeltingRecipes.init();
+            ModEvaporatorRecipes.init();
+            if (enableMachines) {
+                ModPressRecipes.init();
+                ModCookingPotRecipes.init();
+                ModClayOvenRecipes.init();
+            }
         }
+
 
         // Register custom ore for Et Futurum Requiem's deepslate compatibility
         if (enableSaltOre && isModLoaded("etfuturum")) {
