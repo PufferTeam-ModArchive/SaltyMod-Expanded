@@ -62,6 +62,8 @@ public class NEIOvenbakingRecipeHandler extends TemplateRecipeHandler {
             for (Map.Entry<ItemStack, OvenbakingRecipe.OvenRecipe> recipe : OvenbakingRecipe.baking().getRecipes()) {
                 arecipes.add(new OvenPair(recipe.getValue()));
             } 
+        } else {
+            super.loadCraftingRecipes(outputId, results);
         }
     }
     
