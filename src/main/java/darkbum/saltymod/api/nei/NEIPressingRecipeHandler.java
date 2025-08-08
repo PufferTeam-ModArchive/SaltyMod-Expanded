@@ -64,6 +64,15 @@ public class NEIPressingRecipeHandler extends TemplateRecipeHandler {
     }
 
     @Override
+    public void loadCraftingRecipes(String outputId, Object... results) {
+        if (outputId.equals(getOverlayIdentifier()) && getClass() == NEIPressingRecipeHandler.class) {
+            for (Map.Entry<ItemStack, PressingRecipe.PressRecipe> recipe : PressingRecipe.pressing().getRecipes()) {
+                arecipes.add(new PressPair(recipe.getValue()));
+            }
+        }
+    }
+
+    @Override
     public void loadCraftingRecipes(ItemStack result) {
         for (Map.Entry<ItemStack, PressingRecipe.PressRecipe> recipe : PressingRecipe.pressing().getRecipes()) {
             if(NEIServerUtils.areStacksSameType(recipe.getValue().output1(), result) || NEIServerUtils.areStacksSameType(recipe.getValue().output2(), result)) {

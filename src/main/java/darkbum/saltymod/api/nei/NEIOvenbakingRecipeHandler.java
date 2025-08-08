@@ -57,6 +57,15 @@ public class NEIOvenbakingRecipeHandler extends TemplateRecipeHandler {
     }
 
     @Override
+    public void loadCraftingRecipes(String outputId, Object... results) {
+        if (outputId.equals(getOverlayIdentifier()) && getClass() == NEIOvenbakingRecipeHandler.class) {
+            for (Map.Entry<ItemStack, OvenbakingRecipe.OvenRecipe> recipe : OvenbakingRecipe.baking().getRecipes()) {
+                arecipes.add(new OvenPair(recipe.getValue()));
+            } 
+        }
+    }
+    
+    @Override
     public void loadCraftingRecipes(ItemStack result) {
         for (Map.Entry<ItemStack, OvenbakingRecipe.OvenRecipe> recipe : OvenbakingRecipe.baking().getRecipes()) {
             if(NEIServerUtils.areStacksSameType(recipe.getKey(), result)) {

@@ -69,6 +69,15 @@ public class NEIPotcookingRecipeHandler extends TemplateRecipeHandler {
     }
 
     @Override
+    public void loadCraftingRecipes(String outputId, Object... results) {
+        if (outputId.equals(getOverlayIdentifier()) && getClass() == NEIPotcookingRecipeHandler.class) {
+            for (Map.Entry<ItemStack, PotcookingRecipe.PotRecipe> recipe : PotcookingRecipe.cooking().getRecipes()) {
+                arecipes.add(new CookingPotPair(recipe.getValue()));
+            }
+        }
+    }
+    
+    @Override
     public void loadCraftingRecipes(ItemStack result) {
         for (Map.Entry<ItemStack, PotcookingRecipe.PotRecipe> recipe : PotcookingRecipe.cooking().getRecipes()) {
             if(NEIServerUtils.areStacksSameType(recipe.getKey(), result)) {
