@@ -187,7 +187,7 @@ public class ModBlocks {
         registerBlock(storage_barrel, ItemBlockStorageBarrel.class, "storage_barrel", enableStorageBlocks);
         registerBlock(storage_sack, ItemBlockStorageSack.class, "storage_sack", enableStorageBlocks);
         registerBlock(salt_crystal, "salt_crystal", enableSaltCrystal);
-        registerBlock(onions, "onions", enableOnion);
+        registerBlock(onions, "onions");
         registerBlock(saltworts, "saltworts");
         registerBlock(salt_flower_d, ItemBlockSaltFlowerDirt.class, "salt_flower_d", enableSaltFlowers);
         registerBlock(salt_flower_s, ItemBlockSaltFlowerSand.class, "salt_flower_s", enableSaltFlowers, efr);

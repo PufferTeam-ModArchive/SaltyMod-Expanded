@@ -738,7 +738,7 @@ public class ModItems {
         registerItem(salt_pinch, "salt_pinch");
         registerItem(sugar_pinch, "sugar_pinch");
         registerItem(dough, "dough", enableDough);
-        registerItem(onion, "onion", enableOnion);
+        registerItem(onion, "onion");
         registerItem(saltwort, "saltwort");
         registerItem(golden_saltwort, "golden_saltwort", enableGoldenFoods);
         registerItem(golden_potato, "golden_potato", enableGoldenFoods);
