@@ -40,7 +40,8 @@ public class ItemDeveloperFoods extends ItemSaltFood {
      * @param advanced  Whether advanced tooltips are enabled.
      */
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
+    @SuppressWarnings("rawtypes")
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean advanced) {
         addItemTooltip(stack, list);
     }
 
@@ -53,6 +54,7 @@ public class ItemDeveloperFoods extends ItemSaltFood {
      * @return the resulting ItemStack after the item is consumed.
      */
     @Override
+    @SuppressWarnings("rawtypes")
     public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
         if (!world.isRemote) {
             int meta = stack.getItemDamage();

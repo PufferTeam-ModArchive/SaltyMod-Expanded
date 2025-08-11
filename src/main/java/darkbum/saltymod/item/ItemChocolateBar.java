@@ -38,7 +38,8 @@ public class ItemChocolateBar extends ItemSaltFood {
      * @param advanced  Whether advanced tooltips are enabled.
      */
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
+    @SuppressWarnings("rawtypes")
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean advanced) {
         addItemTooltip(stack, list);
     }
 
@@ -50,6 +51,7 @@ public class ItemChocolateBar extends ItemSaltFood {
      * @param player The player who ate the food.
      */
     @Override
+    @SuppressWarnings("rawtypes")
     protected void onFoodEaten(ItemStack stack, net.minecraft.world.World world, EntityPlayer player) {
         sendRandomFullChatMessage(world, player, getUnlocalizedName(), 4);
     }
