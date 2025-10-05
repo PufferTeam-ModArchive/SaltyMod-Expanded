@@ -1,5 +1,6 @@
 package darkbum.saltymod.util;
 
+import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -44,14 +45,30 @@ public final class ConditionalRegistrar {
      */
     public static void registerOre(String oreName, Item item, boolean... conditions) {
         if (checkConditions(conditions)) return;
+        if(item == null) return;
+        if(GameData.getItemRegistry().getNameForObject(item) == null) return;
         OreDictionary.registerOre(oreName, item);
     }
 
     public static void registerOre(String oreName, ItemStack itemStack, boolean... conditions) {
         if (checkConditions(conditions)) return;
-        OreDictionary.registerOre(oreName, itemStack);
+        if(itemStack == null) return;
+        if(isStackRegistered(itemStack)) {
+            OreDictionary.registerOre(oreName, itemStack);
+        }
     }
 
+    public static boolean isStackRegistered(ItemStack stack) {
+        if (stack == null || stack.getItem() == null) {
+            return false; // empty or invalid stack
+        }
+
+        Item item = stack.getItem();
+        String registryName = GameData.getItemRegistry().getNameForObject(item);
+
+        // if the registry name exists and is found in the registry
+        return registryName != null && GameData.getItemRegistry().containsKey(registryName);
+    }
     /**
      * Registers an item with the specified name if the provided conditions are met.
      *
