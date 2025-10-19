@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.Loader;
 
 import static darkbum.saltymod.common.config.ModConfigurationEntities.*;
 import static darkbum.saltymod.init.ModItems.*;
@@ -38,22 +39,24 @@ public class LivingDropsEventHandler {
     @SuppressWarnings("unused")
     @SubscribeEvent
     public void onLivingDrop(LivingDropsEvent event) {
-        EntityLivingBase entity = event.entityLiving;
-        boolean isBurning = entity.isBurning();
-        boolean isChild = entity.isChild();
+        if (!Loader.isModLoaded("materialis")) {
+            EntityLivingBase entity = event.entityLiving;
+            boolean isBurning = entity.isBurning();
+            boolean isChild = entity.isChild();
 
-        if (entity instanceof EntityZombie && !isChild) {
-            handleZombieDrops(entity);
-        } else if (entity instanceof EntitySquid) {
-            handleSquidDrops(entity, isBurning);
-        } else if (entity instanceof EntityHorse && !isChild) {
-            handleHorseDrops(entity, isBurning);
-        } else if (entity instanceof EntityBat) {
-            handleBatDrops(entity, isBurning);
-        } else if (babyChickensDropFeathers && entity instanceof EntityChicken && isChild) {
-            handleBabyChickenDrops(entity);
-        } else if (chickensAlwaysDropFeathers && entity instanceof EntityChicken && !isChild) {
-            handleChickenDrops(entity, event);
+            if (entity instanceof EntityZombie && !isChild) {
+                handleZombieDrops(entity);
+            } else if (entity instanceof EntitySquid) {
+                handleSquidDrops(entity, isBurning);
+            } else if (entity instanceof EntityHorse && !isChild) {
+                handleHorseDrops(entity, isBurning);
+            } else if (entity instanceof EntityBat) {
+                handleBatDrops(entity, isBurning);
+            } else if (babyChickensDropFeathers && entity instanceof EntityChicken && isChild) {
+                handleBabyChickenDrops(entity);
+            } else if (chickensAlwaysDropFeathers && entity instanceof EntityChicken && !isChild) {
+                handleChickenDrops(entity, event);
+            }
         }
     }
 
@@ -65,49 +68,53 @@ public class LivingDropsEventHandler {
     private void handleZombieDrops(EntityLivingBase entity) {
         int dropChance = ThreadLocalRandom.current().nextInt(1000);
         if (dropChance < 25) {
-            if (onion != null) entity.entityDropItem(new ItemStack(onion, 1), 0.0f);
+            if (onion != null)
+                entity.entityDropItem(new ItemStack(onion, 1), 0.0f);
         }
     }
 
     /**
      * Handles custom drops for squids.
      *
-     * @param entity   The squid entity.
+     * @param entity    The squid entity.
      * @param isBurning Whether the squid is burning.
      */
     private void handleSquidDrops(EntityLivingBase entity, boolean isBurning) {
         int amount = getDropAmount(1, 3);
         int meta = isBurning ? 1 : 0;
-        if (calamari != null) entity.entityDropItem(new ItemStack(calamari, amount, meta), 0.0f);
+        if (calamari != null)
+            entity.entityDropItem(new ItemStack(calamari, amount, meta), 0.0f);
     }
 
     /**
      * Handles custom drops for horses.
      *
-     * @param entity   The horse entity.
+     * @param entity    The horse entity.
      * @param isBurning Whether the horse is burning.
      */
     private void handleHorseDrops(EntityLivingBase entity, boolean isBurning) {
         int amount = getDropAmount(1, 2);
         int meta = isBurning ? 1 : 0;
-        if (haunch != null) entity.entityDropItem(new ItemStack(haunch, amount, meta), 0.0f);
+        if (haunch != null)
+            entity.entityDropItem(new ItemStack(haunch, amount, meta), 0.0f);
     }
 
     /**
      * Handles custom drops for bats.
      *
-     * @param entity   The bat entity.
+     * @param entity    The bat entity.
      * @param isBurning Whether the bat is burning.
      */
     private void handleBatDrops(EntityLivingBase entity, boolean isBurning) {
         int meta = isBurning ? 1 : 0;
-        if (strider != null) entity.entityDropItem(new ItemStack(strider, 1, meta), 0.0f);
+        if (strider != null)
+            entity.entityDropItem(new ItemStack(strider, 1, meta), 0.0f);
     }
 
     /**
      * Handles custom drops for baby chickens.
      *
-     * @param entity   The bat entity.
+     * @param entity The bat entity.
      */
     private void handleBabyChickenDrops(EntityLivingBase entity) {
         int amount = getDropAmount(chickensAlwaysDropFeathers ? 1 : 0, 1);
@@ -117,7 +124,7 @@ public class LivingDropsEventHandler {
     /**
      * Handles custom drops for chickens.
      *
-     * @param entity   The bat entity.
+     * @param entity The bat entity.
      */
     private void handleChickenDrops(EntityLivingBase entity, LivingDropsEvent event) {
         boolean hasFeatherAlready = false;
