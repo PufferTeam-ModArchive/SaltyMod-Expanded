@@ -43,6 +43,11 @@ public final class ConditionalRegistrar {
      * @param item the item to register
      * @param conditions the conditions that must be true for registration
      */
+    public static void registerOre(String oreName, Block block, boolean... conditions) {
+        if (checkConditions(conditions)) return;
+        OreDictionary.registerOre(oreName, block);
+    }
+
     public static void registerOre(String oreName, Item item, boolean... conditions) {
         if (checkConditions(conditions)) return;
         if(item == null) return;
