@@ -173,6 +173,7 @@ public class OvenbakingRecipe {
             for (ItemStack ingred : ingreds) {
                 boolean ingredMatched = false;
                 for (int j = 0; j < recipe.ingreds.size(); j++) {
+                    if(recipe.ingreds.get(j) == null) continue;
                     if (!matchedIngreds[j] && recipe.ingreds.get(j).matches(ingred)) {
                         matchedIngreds[j] = true;
                         ingredMatched = true;
